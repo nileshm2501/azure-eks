@@ -1,10 +1,12 @@
 # General configuration
 variable "resource_group" {
-  type = string
+  type    = string
+  default = "stage"
 }
 
 variable "location" {
-  type = string
+  type    = string
+  default = "centralindia"
 }
 
 variable "env" {
@@ -12,24 +14,19 @@ variable "env" {
   #stg01
 }
 
-variable "subnet_id" {
+variable "vnet_name" {
+  type    = string
+  default = "stage-vnet"
+}
+variable "subnet_name" {
   type = string
 }
 
-variable "private_cluster_enabled" {
-  type    = bool
-  default = false
-}
-
-variable "network_plugin" {
-  type    = string
-  default = "azure"
-}
 
 # Master NodePool Variables
 variable "master_node_type" {
   type    = string
-  default = "Standard_DS1_v2"
+  default = "Standard_B1s"
 }
 
 variable "master_pool_min_nodes" {
@@ -39,18 +36,18 @@ variable "master_pool_min_nodes" {
 
 variable "master_pool_max_nodes" {
   type    = number
-  default = 1
+  default = 2
 }
 
 variable "master_os_disk_size" {
   type    = number
-  default = 50
+  default = 30
 }
 
 # Worker Pool Configuration
 variable "worker_node_type" {
   type    = string
-  default = "Standard_DS1_v2"
+  default = "Standard_B1s"
 }
 
 variable "worker_pool_min_nodes" {
@@ -60,22 +57,10 @@ variable "worker_pool_min_nodes" {
 
 variable "worker_pool_max_nodes" {
   type    = number
-  default = 1
+  default = 2
 }
 
 variable "worker_os_disk_size" {
   type    = number
-  default = 50
+  default = 30
 }
-
-
-variable "tags" {
-  type = map(any)
-}
-
-
-variable "install_cert_manager" {
-  type    = bool
-  default = false
-}
-

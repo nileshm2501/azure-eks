@@ -1,0 +1,22 @@
+service:
+  type: ClusterIP
+  ports:
+    http: 80
+    https: 443
+
+  targetPort:
+    http: http
+    https: https
+
+ingress:
+  enabled: true
+  selfSigned: false
+  pathType: ImplementationSpecific
+  hostname: devopsnilesh.xyz
+  path: /
+  annotations: 
+    kubernetes.io/ingress.class: nginx
+  extraTls:
+  - hosts:
+      - devopsnilesh.xyz
+    secretName: wildcard-stage-tls

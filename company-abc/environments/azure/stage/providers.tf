@@ -1,17 +1,17 @@
 provider "helm" {
   kubernetes {
-    config_path = "kubeconfig"
+    config_path = "~/.kube/config"
   }
 }
 
 provider "kubernetes" {
-  config_path = "kubeconfig"
+  config_path = "~/.kube/config"
 }
 
 terraform {
   required_providers {
     azurerm = {
-      source = "hashicorp/azurerm"
+      source  = "hashicorp/azurerm"
       version = "3.42.0"
     }
   }
@@ -19,5 +19,5 @@ terraform {
 
 provider "azurerm" {
   # Configuration options
-  features{}
+  features {}
 }
